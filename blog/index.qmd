@@ -1,0 +1,12 @@
+---
+title: "My Blog"
+page-layout: article
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  fields: [title, date, description]
+---
+
+Welcome to my project blog! Explore my technical deep dives and project breakdowns.

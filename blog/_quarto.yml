@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: ../assets/blog_site
+
+website:
+  title: "My Project Blog"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Blog Home
+      - href: about.qmd
+        text: About
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    self-contained: true
+    mathjax: true
+    code-fold: true
+    code-summary: "Show Code"
+    code-tools: true
+    polyfill: false
+    lib-dir: lib 
+
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: false
+  cache: true
