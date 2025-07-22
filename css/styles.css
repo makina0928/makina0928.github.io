@@ -11602,18 +11602,30 @@ html {
   padding: 2rem;
   gap: 2rem;             /* Ensures spacing between columns */
   flex-wrap: wrap;       /* Allows wrapping on small screens */
+  width: 100%;
 }
 
-
-
+/* Ensure .profile and .text share space nicely on desktop */
+.profile,
+.text {
+  flex: 1 1 45%;
+  max-width: 45%;
+}
 
 /* Responsive: Mobile < 768px (6-inch and below) */
 @media (max-width: 767.98px) {
   .homepage-hero {
     flex-direction: column;
-    padding: 1.5rem 1rem;
     align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
     text-align: center;
+  }
+
+  .profile,
+  .text {
+    max-width: 100%;
+    width: 100%;
   }
 
   .text {
@@ -11624,6 +11636,8 @@ html {
 
   .header-buttons {
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .text .display-5 {
@@ -11650,6 +11664,7 @@ html {
   font-size: 2.5rem;
   font-weight: bold;
 }
+
 
 /* Gradient text */
 .text-gradient {
