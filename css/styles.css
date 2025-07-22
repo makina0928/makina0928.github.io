@@ -11653,6 +11653,37 @@ html {
   text-align: justify;
 }
 
+/* Animation for badge */
+/* Slide in and pulse effect */
+@keyframes slideInPulse {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.badge-animated {
+  opacity: 0; /* hidden by default */
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out;
+}
+
+.badge-animated.animate {
+  animation: slideInPulse 1s ease-out 0.4s both;
+}
+
+
+
 
 
 /* Gradient button styling */

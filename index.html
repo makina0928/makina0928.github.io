@@ -136,9 +136,11 @@
   <!-- Left Column -->
   <div class="profile text-center w-100">
     <img class="profile-img" src="assets/profile.png" alt="Profile picture" />
-    <div class="badge bg-gradient-primary-to-secondary text-white mb-3">
-      DATA SCIENCE &middot; BUSINESS INTELLIGENCE &middot; ANALYTICS
+    <div class="badge badge-animated bg-gradient-primary-to-secondary text-white mb-3 px-4 py-2 fw-semibold fs-6 rounded-pill shadow-sm">
+    MACHINE LEARNING · DATA SCIENCE · BUSINESS INTELLIGENCE
     </div>
+
+
 
     <!-- About Me -->
     <div class="about-left mt-3 px-3 px-lg-0 text-start text-lg-start">
@@ -158,7 +160,7 @@
  <!-- Right Column -->
 <div class="text text-lg-start w-100 d-flex flex-column align-items-lg-start align-items-center mt-4">
   <h1 class="display-5 fw-bolder mb-4 text-center text-lg-start text-justify-only">
-    <span class="text-gradient">Turning Data Into Impactful Decisions</span>
+    <span class="text-gradient">From Data to Impact</span>
   </h1>
 
   <div class="header-buttons d-flex gap-3 justify-content-center justify-content-lg-start">
@@ -300,5 +302,24 @@
         });
     });
     </script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+            observer.unobserve(entry.target); // only once
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    const target = document.querySelector(".badge-animated");
+    if (target) observer.observe(target);
+  });
+</script>
 </body>  
 </html>
