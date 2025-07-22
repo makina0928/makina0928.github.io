@@ -136,9 +136,13 @@
   <!-- Left Column -->
   <div class="profile text-center w-100">
     <img class="profile-img" src="assets/profile.png" alt="Profile picture" />
-    <div class="badge bg-gradient-primary-to-secondary text-white mb-3">
-      DATA SCIENCE &middot; BUSINESS INTELLIGENCE &middot; ANALYTICS
+    <div class="badge badge-animated bg-gradient-primary-to-secondary text-white mb-3 px-4 py-2 fw-semibold fs-6 rounded-pill shadow-sm">
+    <strong>MACHINE LEARNING</strong> · <strong>DATA SCIENCE</strong> · <strong>BUSINESS INTELLIGENCE</strong>
     </div>
+
+
+
+
 
     <!-- About Me -->
     <div class="about-left mt-3 px-3 px-lg-0 text-start text-lg-start">
@@ -300,24 +304,5 @@
         });
     });
     </script>
-
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate");
-          observer.unobserve(entry.target); // only animate once
-        }
-      });
-    }, { threshold: 0.5 });
-
-    const badge = document.querySelector(".badge-animated");
-    if (badge) {
-      observer.observe(badge);
-    }
-  });
-</script>
-
 </body>  
 </html>
