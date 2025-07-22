@@ -300,5 +300,24 @@
         });
     });
     </script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target); // only animate once
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const badge = document.querySelector(".badge-animated");
+    if (badge) {
+      observer.observe(badge);
+    }
+  });
+</script>
+
 </body>  
 </html>

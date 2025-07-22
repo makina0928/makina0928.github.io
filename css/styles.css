@@ -11669,18 +11669,22 @@ html {
   }
   100% {
     transform: scale(1);
+    opacity: 1;
   }
 }
 
 .badge-animated {
-  opacity: 0; /* hidden by default */
+  opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease-out;
+  will-change: transform, opacity;
 }
 
 .badge-animated.animate {
   animation: slideInPulse 1s ease-out 0.4s both;
+  opacity: 1 !important;  /* ensure stays visible */
+  transform: translateY(0) !important;
 }
+
 
 
 
