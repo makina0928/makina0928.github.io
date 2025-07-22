@@ -11649,6 +11649,10 @@ html {
     justify-content: center; /* Override if previous flex-start */
   }
 }
+.text-justify-only {
+  text-align: justify;
+}
+
 
 
 /* Gradient button styling */
