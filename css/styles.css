@@ -11587,173 +11587,317 @@ html {
   max-height: 30rem;
   max-width: 40rem;
 }
-.profile .profile-img {
-  height: 80vw;
-  max-height: 45rem;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.profile .dots-1 {
-  position: absolute;
-  width: 3vw;
-  right: 1.5vw;
-  top: 4vw;
-}
-.profile .dots-1 svg {
-  fill: #fff;
-}
-.profile .dots-2 {
-  position: absolute;
-  width: 3vw;
-  right: -4vw;
-  top: 6.05vw;
-}
-.profile .dots-2 svg {
-  fill: #1e30f3;
-}
-.profile .dots-3 {
-  position: absolute;
-  width: 3vw;
-  left: 1.5vw;
-  bottom: 6.05vw;
-}
-.profile .dots-3 svg {
-  fill: #fff;
-}
-.profile .dots-4 {
-  position: absolute;
-  width: 3vw;
-  left: -4vw;
-  bottom: 4vw;
-}
-.profile .dots-4 svg {
-  fill: #1e30f3;
-}
-
-@media (min-width: 576px) {
-  .profile {
-    height: 60vw;
-    width: 60vw;
-  }
-  .profile .profile-img {
-    height: 65vw;
-  }
-  .profile .dots-1 {
-    width: 3vw;
-    right: 1.5vw;
-  }
-  .profile .dots-2 {
-    width: 3vw;
-    right: -4vw;
-  }
-  .profile .dots-3 {
-    width: 3vw;
-    left: 1.5vw;
-  }
-  .profile .dots-4 {
-    width: 3vw;
-    left: -4vw;
-  }
-}
-@media (min-width: 768px) {
-  .profile {
-    height: 50vw;
-    width: 50vw;
-  }
-  .profile .profile-img {
-    height: 55vw;
-  }
-  .profile .dots-1 {
-    width: 3vw;
-    right: 1.5vw;
-  }
-  .profile .dots-2 {
-    width: 3vw;
-    right: -4vw;
-  }
-  .profile .dots-3 {
-    width: 3vw;
-    left: 1.5vw;
-  }
-  .profile .dots-4 {
-    width: 3vw;
-    left: -4vw;
-  }
-}
-@media (min-width: 992px) {
-  .profile {
-    height: 40vw;
-    width: 40vw;
-  }
-  .profile .profile-img {
-    height: 45vw;
-  }
-  .profile .dots-1 {
-    width: 1.5vw;
-    right: 0.75vw;
-  }
-  .profile .dots-2 {
-    width: 1.5vw;
-    right: -2vw;
-  }
-  .profile .dots-3 {
-    width: 1.5vw;
-    left: 0.75vw;
-  }
-  .profile .dots-4 {
-    width: 1.5vw;
-    left: -2vw;
-  }
-}
-@media (min-width: 1200px) {
-  .profile {
-    height: 35vw;
-    width: 35vw;
-  }
-  .profile .profile-img {
-    height: 40vw;
-  }
-  .profile .dots-1 {
-    width: 1.5vw;
-    right: 0.75vw;
-  }
-  .profile .dots-2 {
-    width: 1.5vw;
-    right: -2vw;
-  }
-  .profile .dots-3 {
-    width: 1.5vw;
-    left: 0.75vw;
-  }
-  .profile .dots-4 {
-    width: 1.5vw;
-    left: -2vw;
-  }
-}
 
 
 
-/* Custom gradient for "View Project on Medium" */
-.btn-gradient {
-  background: linear-gradient(to right, #2196F3, #F06292); /* Blue to Pink */
+
+
+
+/* Fullscreen hero layout */
+.homepage-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Text and buttons block */
+.text {
+  width: 100%;
+  text-align: left;
+  padding-right: 2rem;
+}
+
+.text .fs-4 {
+  font-size: 1.25rem;
+}
+
+.text .display-5 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(to right, #4438ca, #f00080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button layout */
+.header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: flex-start;
+}
+
+.header-buttons a {
+  white-space: nowrap;
+  background: linear-gradient(to right, #4438ca, #f00080); /* Gradient for both buttons */
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.5rem;
   font-weight: bold;
-  transition: background 0.3s ease;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-buttons a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .homepage-hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .text {
+    text-align: center;
+    padding: 0 1rem;
+    margin-top: 1rem;
+  }
+
+  .text .display-5 {
+    font-size: 2rem;
+  }
+
+  .text .fs-4 {
+    font-size: 1.1rem;
+  }
+
+  .header-buttons {
+    justify-content: center;
+  }
+}
+
+
+
+
+
+/* Profile image container */
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -1.5rem; /* Pull the whole block higher */
+}
+
+
+
+/* Profile image itself */
+.profile .profile-img {
+  height: auto;
+  max-height: 220px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Badge styling */
+.profile .badge {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
+
+/* About content now on the left side under profile */
+.about-left {
+  max-width: 100%;
+  text-align: left;
+  margin-top: 1.5rem;
+  margin-left: 2rem;   /* Push all about content inward */
+  margin-right: 1rem;
+}
+
+/* Push icons inward (under profile image alignment) */
+.about-left .fs-3 {
+  padding-left: 10rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767.98px) {
+  .about-left {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;
+  }
+
+  .about-left .fs-3 {
+    justify-content: center;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+
+
+
+
+.about-left p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.about-left .fs-3 {
+  margin-top: 0.75rem;
+}
+
+.about-left .fs-3 a {
+  color: inherit;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.about-left .fs-3 a:hover {
+  transform: scale(1.1);
+}
+
+/* Remove absolute dots (optional) */
+.profile .dots-1,
+.profile .dots-2,
+.profile .dots-3,
+.profile .dots-4 {
+  display: none;
+}
+
+/* Text and buttons block */
+.text {
+  width: 100%;
+}
+
+/* Header text styles */
+.text .fs-4 {
+  font-size: 1.25rem;
+}
+
+.text .display-5 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(to right, #4438ca, #f00080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button layout */
+.header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.header-buttons a {
+  white-space: nowrap;
+}
+
+/* About text */
+.text .lead {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.text .text-muted {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+/* Social icons */
+.text .fs-3 a {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.text .fs-3 a:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .homepage-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text .display-5 {
+    font-size: 2rem;
+  }
+
+  .text .fs-4 {
+    font-size: 1.1rem;
+  }
+
+  .text .lead,
+  .text .text-muted {
+    font-size: 0.95rem;
+  }
+
+  .header-buttons {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .homepage-hero {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .profile,
+  .text {
+    flex: 1;
+  }
+
+  .text {
+    padding-right: 2rem;
+  }
+}
+
+
+
+/* Gradient Button Styling to Match Heading */
+.btn-gradient {
+  background: linear-gradient(to right, #4438ca, #f00080); /* Match heading gradient */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  display: inline-block;
+  text-shadow: none;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(to right, #1976D2, #EC407A); /* Darker Blue to Darker Pink */
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(68, 56, 202, 0.4); /* soft glow */
 }
 
-/* Define class to make image smaller */
-.smaller-image {
-  width: 400px; /* Adjust width as needed */
-  height: auto; /* Maintain aspect ratio */
-}
 
 
 @keyframes backgroundAnimation {
