@@ -11602,14 +11602,37 @@ html {
   padding: 2rem;
   gap: 2rem;             /* Ensures spacing between columns */
   flex-wrap: wrap;       /* Allows wrapping on small screens */
-  width: 100%;
 }
 
-/* Ensure .profile and .text share space nicely on desktop */
-.profile,
-.text {
-  flex: 1 1 45%;
-  max-width: 45%;
+
+
+
+/* Responsive: Mobile < 768px (6-inch and below) */
+@media (max-width: 767.98px) {
+  .homepage-hero {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text {
+    padding: 0;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .header-buttons {
+    justify-content: center;
+  }
+
+  .text .display-5 {
+    font-size: 2rem;
+  }
+
+  .text .fs-4 {
+    font-size: 1.1rem;
+  }
 }
 
 /* Text and buttons block */
@@ -11627,70 +11650,6 @@ html {
   font-size: 2.5rem;
   font-weight: bold;
 }
-
-/* Add spacing under about-left (below profile, bio, and icons) */
-.about-left {
-  margin-bottom: 3rem;
-}
-
-/* Gradient button styling */
-.btn-gradient {
-  background: linear-gradient(to right, #4438ca, #f00080);
-  color: white;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  font-weight: bold;
-  transition: background 0.3s ease;
-  border-radius: 0.5rem;
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(to right, #362ebf, #cc0066);
-  color: white;
-}
-
-/* Responsive: Mobile < 768px (6-inch and below) */
-@media (max-width: 767.98px) {
-  .homepage-hero {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .profile,
-  .text {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .about-left {
-    margin-bottom: 3rem; /* Keep spacing between icons and next section */
-  }
-
-  .text {
-    padding: 0;
-    margin-top: 1.5rem;
-    text-align: center;
-  }
-
-  .header-buttons {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .text .display-5 {
-    font-size: 2rem;
-  }
-
-  .text .fs-4 {
-    font-size: 1.1rem;
-  }
-}
-
-
 
 /* Gradient text */
 .text-gradient {
