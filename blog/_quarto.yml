@@ -3,13 +3,11 @@ project:
   output-dir: ../assets/blog_site
 
 website:
-  title: "My Project Blog"
+  title: ""  # Removes "My Project Blog" text in top-left
   navbar:
     left:
-      - href: index.qmd
-        text: Blog Home
-      - href: about.qmd
-        text: About
+      - text: Home
+        href: ../../index.html  # Adjust path if index.html is in project root
 
 format:
   html:
@@ -23,7 +21,7 @@ format:
     code-summary: "Show Code"
     code-tools: true
     polyfill: false
-    lib-dir: lib 
+    lib-dir: lib
 
 execute:
   echo: true
