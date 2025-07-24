@@ -3,6 +3,7 @@ title: "Customer Churn Prediction with Python"
 description: "Building a machine learning model to predict customer churn in the telecom industry."
 date: 2025-06-16
 categories: [machine-learning, python, telecom]
+image: "image.jpg"
 format:
   html:
     code-fold: true
