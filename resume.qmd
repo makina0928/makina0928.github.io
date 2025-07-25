@@ -1,0 +1,17 @@
+---
+title: "Resume"
+format: html
+---
+
+# Resume
+
+## Education
+- **MSc Data Science**, [Your University]
+- **BSc Mathematics**, [Your University]
+
+## Experience
+- **Data Scientist**, XYZ Company (2022–Present)  
+  - Built end-to-end ML pipelines for telecom churn prediction
+
+## Skills
+- Python, R, SQL, Power BI, Docker, FastAPI

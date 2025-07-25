@@ -1,0 +1,12 @@
+---
+title: "Contact"
+format: html
+---
+
+# Contact Me
+
+Feel free to reach out!
+
+- **Email**: mulimbika@example.com  
+-  [LinkedIn](https://linkedin.com/in/mulimbika)  
+-  [GitHub](https://github.com/mulimbika)

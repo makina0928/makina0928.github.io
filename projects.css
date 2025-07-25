@@ -1,0 +1,101 @@
+/* === Starfield Canvas === */
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* === Backgrounds === */
+body {
+  background-color: #E0E0E0; /* Professional Gray */
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* === Headings === */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+
+
+/* === Links === */
+a {
+  color: #007B7B; /* Accent color for links */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === Cards, Sections, Panels === */
+.card, .section, .content-box {
+  background-color: #FFFFFF;
+  border: 1px solid #C5C5C5; /* Silver Sand */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* === Muted Labels, Meta Text === */
+.muted, .meta, small, .tagline {
+  color: #888888; /* Slightly darker gray */
+}
+
+/* === Dividers / Horizontal Rules === */
+hr {
+  border: none;
+  border-top: 1px solid #C5C5C5;
+  margin: 2rem 0;
+}
+
+/* === Buttons === */
+button, .btn {
+  background-color: #333333;
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover, .btn:hover {
+  background-color: #444444;
+}
+
+/* === Inputs / Forms === */
+input, textarea, select {
+  border: 1px solid #CCCCCC;
+  padding: 0.6rem;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #2A2A2A;
+}
+input::placeholder, textarea::placeholder {
+  color: #999999;
+}
+
+/* === Footer === */
+footer {
+  background-color: #D0D0D0; /* Slightly darker footer */
+  color: #2A2A2A;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}

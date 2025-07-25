@@ -1,0 +1,16 @@
+---
+title: "."
+listing:
+  contents: posts
+  fields: [image, title, date, reading-time]
+  categories: true
+  sort-ui: true
+  filter-ui: true
+page-layout: full
+format:
+  html:
+    theme: default
+    toc: false
+    css: projects.css
+    page-layout: full
+---
