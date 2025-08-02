@@ -141,7 +141,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Contact - Modern Business Portfolio</title>
@@ -210,14 +209,6 @@ ul.task-list li input[type="checkbox"] {
       justify-content: center;
       margin: auto;
     }
-
-    .success-msg, .error-msg {
-      display: none;
-    }
-
-    .visible {
-      display: block !important;
-    }
   </style>
 
 
@@ -234,7 +225,15 @@ ul.task-list li input[type="checkbox"] {
             <p class="text-muted mb-0">Let's work together!</p>
           </div>
 
-          <form id="contactForm" name="contact" method="POST" data-netlify="true">
+          <!-- ✅ Native Netlify Form -->
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            
+            <!-- Optional honeypot field -->
+            <p hidden="">
+              <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+            </p>
+
             <div class="form-floating mb-3">
               <input class="form-control" id="name" type="text" name="name" placeholder="Your Name" required="">
               <label for="name">Full name</label>
@@ -259,14 +258,6 @@ ul.task-list li input[type="checkbox"] {
               <div class="invalid-feedback">Message is required.</div>
             </div>
 
-            <!-- Feedback -->
-            <div class="text-center success-msg text-success fw-bold mb-3" id="submitSuccessMessage">
-              Form submitted successfully!
-            </div>
-            <div class="text-center error-msg text-danger fw-bold mb-3" id="submitErrorMessage">
-              Something went wrong. Try again.
-            </div>
-
             <div class="d-grid">
               <button class="btn btn-custom btn-lg text-white" type="submit" id="submitButton">Submit</button>
             </div>
@@ -276,36 +267,6 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
   </main>
-
-  <!-- Optional JS for custom form submission feedback -->
-  <script>
-    const form = document.getElementById('contactForm');
-    const success = document.getElementById('submitSuccessMessage');
-    const error = document.getElementById('submitErrorMessage');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const data = new FormData(form);
-
-      fetch('/', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          success.classList.add('visible');
-          error.classList.remove('visible');
-          form.reset();
-        } else {
-          throw new Error("Form submission failed");
-        }
-      }).catch(() => {
-        error.classList.add('visible');
-        success.classList.remove('visible');
-      });
-    });
-  </script>
-
 
 
 
