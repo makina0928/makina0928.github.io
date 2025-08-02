@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 4ae25aa9-c1ee-4623-819b-213b2fc65e08
+      url: 'https://fabulous-gumption-a24f1c.netlify.app'
