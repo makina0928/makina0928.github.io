@@ -123,10 +123,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <style>
-  .intro-section{
+  .intro-section {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: row; /* Critical for desktop layout */
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -138,47 +138,16 @@ ul.task-list li input[type="checkbox"] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    order: 1;
+    order: 1; /* Image should appear on the left */
   }
 
   .intro-right {
     flex: 2 1 300px;
     max-width: 700px;
-    order: 2;
+    order: 2; /* Text should appear on the right */
   }
 
-  .intro-right p {
-    text-align: justify;
-  }
-
-  .text-gradient {
-    background: linear-gradient(to right, #141fd2, #e02892);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-  }
-
-  .profile-img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    margin-bottom: 16px;
-  }
-
-  .custom-badge {
-    background: linear-gradient(to right, #2e2eff, #ec2aa7);
-    color: white;
-    font-weight: 700;
-    padding: 10px 24px;
-    border-radius: 999px;
-    font-size: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    text-align: center;
-    white-space: nowrap;
-  }
-
+  /* Mobile-specific override: stack vertically */
   @media (max-width: 768px) {
     .intro-section {
       flex-direction: column;
@@ -186,17 +155,18 @@ ul.task-list li input[type="checkbox"] {
     }
 
     .intro-left {
-      order: 1;
+      order: 1; /* Image appears on top */
     }
 
     .intro-right {
-      order: 2;
+      order: 2; /* Text appears below on mobile */
     }
 
     .intro-right p {
       text-align: center;
     }
   }
+
 
 
 
@@ -247,46 +217,43 @@ ul.task-list li input[type="checkbox"] {
       text-align: center;
     }
   }
-</style>
+  </style>
 
-<section class="intro-section">
-  <!-- Left: Profile Image + Badge -->
-  <div class="intro-left">
-    <img class="profile-img" src="profile.jpg" alt="Profile picture">
-    <div class="custom-badge">
-      <strong>DATA SCIENCE</strong> · <strong>BUSINESS INTELLIGENCE</strong>
+  <section class="intro-section">
+    <!-- Left: Profile Image + Badge -->
+    <div class="intro-left">
+      <img class="profile-img" src="profile.jpg" alt="Profile picture">
+      <div class="custom-badge">
+        <strong>DATA SCIENCE</strong> · <strong>BUSINESS INTELLIGENCE</strong>
+      </div>
     </div>
-  </div>
 
+    <!-- Right: Description -->
+    <div class="intro-right">
+      <h1 class="display-5 fw-bolder mb-4 text-start">
+        <span class="text-gradient">From Data to Impact</span>
+      </h1>
 
+      <p class="lead fw-light mb-2 text-justify-only"><strong>
+        I'm Mulimbika Makina, a Data Scientist with an MSc in Mathematics (Data Science Option),
+        combining mathematical depth with statistical rigor to solve real-world problems.
+      </strong></p>
 
+      <p class="text-muted mb-0 text-justify-only">
+        With expertise in <strong>Python</strong>, <strong>SQL</strong>, <strong>R</strong>,
+        <strong>SPSS</strong>, <strong>STATA</strong>, <strong>Power BI</strong>, and
+        <strong>Metabase</strong>, I build predictive models and intuitive dashboards that unlock real value.
+      </p>
 
-  <!-- Right: Description -->
-  <div class="intro-right">
-  <h1 class="display-5 fw-bolder mb-4 text-start">
-    <span class="text-gradient">From Data to Impact</span>
-  </h1>
-
-  <p class="lead fw-light mb-2 text-justify-only"><strong>
-    I'm Mulimbika Makina, a Data Scientist with an MSc in Mathematics (Data Science Option),
-    combining mathematical depth with statistical rigor to solve real-world problems.
-  </strong></p>
-
-  <p class="text-muted mb-0 text-justify-only">
-    With expertise in <strong>Python</strong>, <strong>SQL</strong>, <strong>R</strong>,
-    <strong>SPSS</strong>, <strong>STATA</strong>, <strong>Power BI</strong>, and
-    <strong>Metabase</strong>, I build predictive models and intuitive dashboards that unlock real value.
-  </p>
-
-    <!-- Centered social icons -->
-  <div class="d-flex justify-content-center mt-4">
-    <div class="social-icons fs-3 d-flex gap-3">
-      <a class="text-gradient" href="https://www.linkedin.com/in/mulimbika-makina-6a2507318" target="_blank"><i class="bi bi-linkedin"></i></a>
-      <a class="text-gradient" href="https://github.com/makina0928" target="_blank"><i class="bi bi-github"></i></a>
+      <!-- Social icons (optional) -->
+      <div class="d-flex justify-content-center mt-4">
+        <div class="social-icons fs-3 d-flex gap-3">
+          <a class="text-gradient" href="https://www.linkedin.com/in/mulimbika-makina-6a2507318" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <a class="text-gradient" href="https://github.com/makina0928" target="_blank"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
+  </section>
 
 <style>
   html, body {
@@ -445,7 +412,7 @@ animate();
 
 
 
-</section></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
