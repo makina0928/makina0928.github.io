@@ -168,18 +168,51 @@ ul.task-list li input[type="checkbox"] {
         box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
       }
 
+      .tab-scroll-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+
       .tab-buttons {
         display: flex;
-        justify-content: center;
-        flex-wrap: nowrap;
         gap: 16px;
-        margin-bottom: 30px;
         overflow-x: auto;
         padding: 0 10px;
+        flex-grow: 1;
+        scroll-behavior: smooth;
       }
 
       .tab-buttons::-webkit-scrollbar {
         display: none;
+      }
+
+      .scroll-arrow {
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        padding: 0 10px;
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .scroll-arrow {
+          display: block;
+        }
+
+        .left-arrow {
+          margin-right: 5px;
+        }
+
+        .right-arrow {
+          margin-left: 5px;
+        }
       }
 
       .tab-content {
@@ -216,12 +249,16 @@ ul.task-list li input[type="checkbox"] {
 
   
     <main>
-      <!-- Badge-style tabs -->
-      <div class="tab-buttons">
-        <button class="custom-badge active" data-target="experience">Experience</button>
-        <button class="custom-badge" data-target="download">Download Resume</button>
-        <button class="custom-badge" data-target="education">Education</button>
-        <button class="custom-badge" data-target="skills">Technical Skills</button>
+      <!-- Scrollable tabs with arrows -->
+      <div class="tab-scroll-wrapper">
+        <button class="scroll-arrow left-arrow" aria-label="Scroll left">«</button>
+        <div class="tab-buttons" id="tabScroll">
+          <button class="custom-badge active" data-target="experience">Experience</button>
+          <button class="custom-badge" data-target="download">Download Resume</button>
+          <button class="custom-badge" data-target="education">Education</button>
+          <button class="custom-badge" data-target="skills">Technical Skills</button>
+        </div>
+        <button class="scroll-arrow right-arrow" aria-label="Scroll right">»</button>
       </div>
 
       <!-- Content panes -->
@@ -243,24 +280,50 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </main>
 
-    <!-- Tab switching script -->
+    <!-- Tab switching + arrow logic -->
     <script>
       const buttons = document.querySelectorAll('.custom-badge');
       const panes = document.querySelectorAll('.tab-pane');
+      const tabScroll = document.getElementById('tabScroll');
+      const leftArrow = document.querySelector('.left-arrow');
+      const rightArrow = document.querySelector('.right-arrow');
 
+      // Tab switching logic
       buttons.forEach(button => {
         button.addEventListener('click', () => {
-          // Remove active class from all
           buttons.forEach(btn => btn.classList.remove('active'));
           panes.forEach(pane => pane.classList.remove('active'));
 
-          // Activate clicked tab and show corresponding content
           button.classList.add('active');
           document.getElementById(button.dataset.target).classList.add('active');
         });
       });
+
+      // Arrow scroll controls
+      function updateArrowVisibility() {
+        const scrollLeft = tabScroll.scrollLeft;
+        const scrollWidth = tabScroll.scrollWidth;
+        const clientWidth = tabScroll.clientWidth;
+
+        // Hide/show arrows based on position
+        leftArrow.style.display = scrollLeft <= 0 ? 'none' : 'block';
+        rightArrow.style.display = scrollLeft + clientWidth >= scrollWidth - 1 ? 'none' : 'block';
+      }
+
+      leftArrow.addEventListener('click', () => {
+        tabScroll.scrollBy({ left: -150, behavior: 'smooth' });
+      });
+
+      rightArrow.addEventListener('click', () => {
+        tabScroll.scrollBy({ left: 150, behavior: 'smooth' });
+      });
+
+      tabScroll.addEventListener('scroll', updateArrowVisibility);
+      window.addEventListener('load', updateArrowVisibility);
+      window.addEventListener('resize', updateArrowVisibility);
     </script>
   
+
 
 
 
