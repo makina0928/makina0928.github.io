@@ -1,5 +1,10 @@
 ---
-format: html
+page-layout: full
+format:
+  html:
+    theme: default
+    toc: false
+    page-layout: full
 ---
 
 ```{=html}
@@ -16,196 +21,453 @@ format: html
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
+
     <style>
-      body {
+    html, body {
         font-family: 'Plus Jakarta Sans', sans-serif;
-      }
+    }
 
-      main {
-        padding: 0;
-        margin: 0;
-      }
+    *, *::before, *::after {
+        box-sizing: inherit;
+    }
 
-      /* Fully-rounded badge-style tabs */
-      .custom-badge {
+    .custom-badge {
         background: linear-gradient(to right, #2e2eff, #ec2aa7);
         color: white;
         font-weight: 700;
-        padding: 10px 24px;
+        padding: 5px 15px;
         border-radius: 999px;
         font-size: 1rem;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: center;
         white-space: nowrap;
         transition: all 0.3s ease;
-        border: none;
+        border: 4px solid transparent;
         margin: 8px;
         flex-shrink: 0;
-      }
+    }
 
-      .custom-badge:hover,
-      .custom-badge.active {
+    .custom-badge:hover {
         background: linear-gradient(to right, #2563eb, #d946ef);
         transform: scale(1.05);
         box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
-      }
+    }
 
-      .tab-scroll-wrapper {
+    .custom-badge.active {
+        background: linear-gradient(to right, #2563eb, #d946ef);
+        transform: scale(1.05);
+        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+        border: 4px solid black;
+    }
+
+    .tab-scroll-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .tab-buttons {
         display: flex;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 16px;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        padding-inline: 10px;
+        scroll-behavior: smooth;
+    }
+
+    .tab-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scroll-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
         align-items: center;
         justify-content: center;
-        position: relative;
-        margin: 20px 0;
-        overflow: hidden;
-      }
-
-      .tab-buttons {
-        display: flex;
-        gap: 16px;
-        overflow-x: auto;
-        padding: 0 10px;
-        flex-grow: 1;
-        scroll-behavior: smooth;
-      }
-
-      .tab-buttons::-webkit-scrollbar {
-        display: none;
-      }
-
-      .scroll-arrow {
-        background: none;
-        border: none;
-        font-size: 1.8rem;
-        font-weight: bold;
         color: #333;
         cursor: pointer;
-        padding: 0 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
         display: none;
-      }
+    }
 
-      @media (max-width: 768px) {
+    @media (max-width: 768px) {
         .scroll-arrow {
-          display: block;
+        display: flex;
         }
+    }
 
-        .left-arrow {
-          margin-right: 5px;
-        }
+    .scroll-arrow.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
 
-        .right-arrow {
-          margin-left: 5px;
-        }
-      }
+    .left-arrow {
+        left: 5px;
+    }
 
-      .tab-content {
+    .right-arrow {
+        right: 5px;
+    }
+
+    .tab-content {
         width: 100%;
         padding: 0;
         margin: 0;
-      }
+    }
 
-      .tab-pane {
+    .tab-pane {
         width: 100%;
         text-align: left;
         padding: 30px;
-        box-sizing: border-box;
         display: none;
-      }
+        position: relative;
+        overflow-y: auto;
+        max-height: 80vh;
+        border-radius: 6px;
+    }
 
-      .tab-pane.active {
+    .tab-pane.active {
         display: block;
         border: 1px solid #ddd;
         background-color: #fff;
-        margin: 0 30px;
-        border-radius: 6px;
+        margin: 0;
+        width: 100%;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-      }
+    }
 
-      @media (max-width: 768px) {
+    .down-arrow {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .down-arrow.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    @media (max-width: 768px) {
         .tab-pane.active {
-          margin: 0 15px;
-          padding: 20px;
+        padding: 20px;
         }
-      }
+    }
     </style>
-  </head>
 
+
+
+
+
+  </head>
   <body class="bg-light">
     <main>
-      <!-- Scrollable tabs with arrows -->
       <div class="tab-scroll-wrapper">
-        <button class="scroll-arrow left-arrow" aria-label="Scroll left">&laquo;</button>
-        <div class="tab-buttons" id="tabScroll">
+        <button class="scroll-arrow left-arrow" aria-label="Scroll left">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div class="tab-buttons">
           <button class="custom-badge active" data-target="experience">Experience</button>
-          <button class="custom-badge" data-target="download">Download Resume</button>
           <button class="custom-badge" data-target="education">Education</button>
           <button class="custom-badge" data-target="skills">Technical Skills</button>
+          <button class="custom-badge" data-target="download">Download Resume</button>
         </div>
-        <button class="scroll-arrow right-arrow" aria-label="Scroll right">&raquo;</button>
+        <button class="scroll-arrow right-arrow" aria-label="Scroll right">
+          <i class="bi bi-chevron-right"></i>
+        </button>
       </div>
-
-      <!-- Content panes -->
       <div class="tab-content">
         <div id="experience" class="tab-pane active">
-          <p>Experience content here...</p>
+          <!-- <div class="down-arrow"><i class="bi bi-chevron-down"></i></div> -->
+
+
+
+            <!-- Experience Section-->
+            <section>
+                <!-- Experience Card 1-->
+                <div class="card shadow border-0 rounded-4 mb-3">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center gx-3">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                <div class="bg-light p-2 rounded-4">
+                                    <div class="text-primary fw-bolder mb-2">Jan 2024 - June 2024</div>
+                                    <div class="small fw-bolder">Data Analyst</div>
+                                    <div class="small text-muted">L&A Logistics Zambia</div>
+                                    <div class="small text-muted">Lusaka, Zambia</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div>
+                                    <ul>
+                                        <li>Designed interactive Power BI dashboards for business performance monitoring.</li>
+                                        <li>Automated data extraction and transformation processes using SQL and Python.</li>
+                                        <li>Collaborated with cross-functional teams to identify data-driven solutions.</li>
+                                        <li>Improved data integrity and streamlined reporting processes.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Card 2-->
+                <div class="card shadow border-0 rounded-4 mb-3">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center gx-3">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                <div class="bg-light p-2 rounded-4">
+                                    <div class="text-primary fw-bolder mb-2">Jan 2023 - Dec 2023</div>
+                                    <div class="small fw-bolder">Business Intelligence Analyst</div>
+                                    <div class="small text-muted">Entrepreneurs Financial Center</div>
+                                    <div class="small text-muted">Lusaka, Zambia</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div>
+                                    <ul>
+                                        <li>Reduced non-performing loans by 10% using advanced SQL and CVM strategies.</li>
+                                        <li>Developed and maintained Business Intelligence dashboards for real-time data visualization.</li>
+                                        <li>Collaborated with cross-functional teams to identify and implement data-driven solutions.</li>
+                                        <li>Conducted data analysis to support strategic decision-making and improve operational efficiency.</li>
+                                        <li>Enhanced reporting efficiency through automation and real-time cloud data pipelines.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Card 3-->
+                <div class="card shadow border-0 rounded-4 mb-3">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center gx-3">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                <div class="bg-light p-2 rounded-4">
+                                    <div class="text-primary fw-bolder mb-2">July 2022 - Nov 2022</div>
+                                    <div class="small fw-bolder">Research Assistant</div>
+                                    <div class="small text-muted">Elite Africa Research</div>
+                                    <div class="small text-muted">Kitwe, Zambia</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div>
+                                    <ul>
+                                        <li>Conducted data collection and analysis using SPSS for major research projects.</li>
+                                        <li>Assisted in the preparation of research reports and presentations.</li>
+                                        <li>Collaborated with team members to ensure data accuracy and integrity.</li>
+                                        <li>Supported the development of research methodologies and data collection tools.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Card 4-->
+                <div class="card shadow border-0 rounded-4 mb-3">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center gx-3">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                <div class="bg-light p-2 rounded-4">
+                                    <div class="text-primary fw-bolder mb-2">Feb 2022 - June 2022</div>
+                                    <div class="small fw-bolder">Mathematics & Statistics Tutor</div>
+                                    <div class="small text-muted">Mulungushi University </div>
+                                    <div class="small text-muted">Zambia</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div>
+                                    <ul>
+                                        <li>Delivered tutorials in Business Mathematics, Statistics and Mathematical Methods.</li>
+                                        <li>Assisted students in understanding complex mathematical concepts and problem-solving techniques.</li>
+                                        <li>Provided one-on-one tutoring sessions to enhance students' academic performance.</li>
+                                        <li>Evaluated student progress and provided feedback to improve learning outcomes.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Experience Card 5-->
+            <div class="card shadow border-0 rounded-4 mb-3">
+                <div class="card-body p-3">
+                    <div class="row align-items-center gx-3">
+                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                            <div class="bg-light p-2 rounded-4">
+                                <div class="text-primary fw-bolder mb-2">May 2021 - Sep 2021</div>
+                                <div class="small fw-bolder">Mathematics & Statistics Tutor</div>
+                                <div class="small text-muted">The Copperbelt University</div>
+                                <div class="small text-muted">Zambia</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div>
+                                <ul>
+                                    <li>Delivered tutorials in Business Mathematics, Statistics and Mathematical Methods.</li>
+                                    <li>Assisted students in understanding complex mathematical concepts and problem-solving techniques.</li>
+                                    <li>Provided one-on-one tutoring sessions to enhance students' academic performance.</li>
+                                    <li>Evaluated student progress and provided feedback to improve learning outcomes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div id="education" class="tab-pane">
+                        <!-- Education Section-->
+            <section>
+                <!-- Education Card 1-->
+                <div class="card shadow border-0 rounded-4 mb-3">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center gx-3">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                <div class="bg-light p-2 rounded-4">
+                                    <div class="text-primary fw-bolder mb-2">2024 - 2026</div>
+                                    <div class="mb-2">
+                                        <div class="small fw-bolder">Pan African University</div>
+                                        <div class="small text-muted">Nairobi, Kenya</div>
+                                    </div>
+                                    <div class="fst-italic">
+                                        <div class="small text-muted">MSc</div>
+                                        <div class="small text-muted">Mathematics (Data Science)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9"><div>Master's degree in Mathematics with Data Science specialization</div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education Card 2-->
+                <div class="card shadow border-0 rounded-4 mb-3">
+                    <div class="card-body p-3">
+                        <div class="row align-items-center gx-3">
+                            <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                <div class="bg-light p-2 rounded-4">
+                                    <div class="text-primary fw-bolder mb-2">2017 - 2022</div>
+                                    <div class="mb-2">
+                                        <div class="small fw-bolder">Copperbelt University</div>
+                                        <div class="small text-muted">Kitwe, Zambia</div>
+                                    </div>
+                                    <div class="fst-italic">
+                                        <div class="small text-muted">BSc</div>
+                                        <div class="small text-muted">Mathematics (with Statistics)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9"><div>Bachelor's degree in Mathematics with Statistics specialization</div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="skills" class="tab-pane">
+            <section>
+                <!-- Skillset Card-->
+                <div class="">
+                    <div class="card-body p-3">
+                        <!-- Professional skills list-->
+                        <div class="mb-5">
+                            <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Data Visualization (Power BI, Metabase, Excel, Tableau)</div></div>
+                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Programming (SQL, Python, R)</div></div>
+                            </div>
+                            <div class="row row-cols-1 row-cols-md-3">
+                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Statistical Analysis (SPSS, STATA)</div></div>
+                                <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Business Intelligence</div></div>
+                                <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">SAP Reporting & Financial Modeling</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
         <div id="download" class="tab-pane">
+          <!-- <div class="down-arrow"><i class="bi bi-chevron-down"></i></div> -->
           <a class="btn btn-primary px-4 py-3" href="assets/Mulimbika_Makina_CV.pdf" download>
             <i class="bi bi-download me-2"></i>Download Resume
           </a>
         </div>
-        <div id="education" class="tab-pane">
-          <p>Education content here...</p>
-        </div>
-        <div id="skills" class="tab-pane">
-          <p>Technical Skills content here...</p>
-        </div>
       </div>
     </main>
-
-    <!-- Tab switching + arrow logic -->
     <script>
       const buttons = document.querySelectorAll('.custom-badge');
       const panes = document.querySelectorAll('.tab-pane');
-      const tabScroll = document.getElementById('tabScroll');
+      const tabButtons = document.querySelector('.tab-buttons');
       const leftArrow = document.querySelector('.left-arrow');
       const rightArrow = document.querySelector('.right-arrow');
 
-      // Tab switching logic
+      function updateArrowVisibility() {
+        const scrollLeft = tabButtons.scrollLeft;
+        const maxScrollLeft = tabButtons.scrollWidth - tabButtons.clientWidth;
+        leftArrow.classList.toggle('visible', scrollLeft > 0);
+        rightArrow.classList.toggle('visible', scrollLeft < maxScrollLeft - 1);
+      }
+
+      function updateScrollArrow(pane) {
+        const arrow = pane.querySelector('.down-arrow');
+        const scrollTop = pane.scrollTop;
+        const scrollHeight = pane.scrollHeight;
+        const clientHeight = pane.clientHeight;
+        const shouldShow = scrollTop + clientHeight < scrollHeight - 10;
+        arrow.classList.toggle('visible', shouldShow);
+      }
+
       buttons.forEach(button => {
         button.addEventListener('click', () => {
           buttons.forEach(btn => btn.classList.remove('active'));
           panes.forEach(pane => pane.classList.remove('active'));
-
           button.classList.add('active');
-          document.getElementById(button.dataset.target).classList.add('active');
+          const targetPane = document.getElementById(button.dataset.target);
+          targetPane.classList.add('active');
+          updateScrollArrow(targetPane);
         });
       });
 
-      // Arrow scroll controls
-      function updateArrowVisibility() {
-        const scrollLeft = tabScroll.scrollLeft;
-        const scrollWidth = tabScroll.scrollWidth;
-        const clientWidth = tabScroll.clientWidth;
-
-        // Hide/show arrows based on position
-        leftArrow.style.display = scrollLeft <= 0 ? 'none' : 'block';
-        rightArrow.style.display = scrollLeft + clientWidth >= scrollWidth - 1 ? 'none' : 'block';
-      }
-
       leftArrow.addEventListener('click', () => {
-        tabScroll.scrollBy({ left: -150, behavior: 'smooth' });
+        tabButtons.scrollBy({ left: -150, behavior: 'smooth' });
       });
 
       rightArrow.addEventListener('click', () => {
-        tabScroll.scrollBy({ left: 150, behavior: 'smooth' });
+        tabButtons.scrollBy({ left: 150, behavior: 'smooth' });
       });
 
-      tabScroll.addEventListener('scroll', updateArrowVisibility);
-      window.addEventListener('load', updateArrowVisibility);
+      tabButtons.addEventListener('scroll', updateArrowVisibility);
+
+      panes.forEach(pane => {
+        pane.addEventListener('scroll', () => updateScrollArrow(pane));
+      });
+
+      window.addEventListener('load', () => {
+        updateArrowVisibility();
+        panes.forEach(updateScrollArrow);
+      });
       window.addEventListener('resize', updateArrowVisibility);
     </script>
   </body>
 </html>
-
 
 ```
