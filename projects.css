@@ -40,9 +40,119 @@ a:hover {
 
 
 
+/* Base: project titles */
+.quarto-listing .listing-title a,
+.quarto-post .listing-title a,
+.quarto-listing .quarto-post .title a {
+  color: #2A2A2A;
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease, background-position .4s ease;
+}
+
+/* Subtle lift + gradient text on hover */
+.quarto-listing .listing-title a:hover,
+.quarto-post .listing-title a:hover,
+.quarto-listing .quarto-post .title a:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #3b82f6, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;               /* Safari fallback handled by -webkit-text-fill */
+  -webkit-text-fill-color: transparent;
+}
+
+/* Optional: animated underline that grows from center on hover */
+.quarto-listing .listing-title a,
+.quarto-post .listing-title a,
+.quarto-listing .quarto-post .title a {
+  position: relative;
+}
+
+.quarto-listing .listing-title a::after,
+.quarto-post .listing-title a::after,
+.quarto-listing .quarto-post .title a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  height: 3px;
+  width: 0;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  background: linear-gradient(90deg, #3b82f6, #ec4899);
+  transition: width .25s ease;
+}
+
+.quarto-listing .listing-title a:hover::after,
+.quarto-post .listing-title a:hover::after,
+.quarto-listing .quarto-post .title a:hover::after {
+  width: 100%;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .quarto-listing .listing-title a,
+  .quarto-post .listing-title a,
+  .quarto-listing .quarto-post .title a {
+    transition: none;
+  }
+}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Stylish blue-to-pink gradient separator with fade at both ends */
+.quarto-listing .quarto-post,
+.quarto-listing .quarto-listing-item {
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.quarto-listing .quarto-post::after,
+.quarto-listing .quarto-listing-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px; /* thickness */
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #3b82f6,
+    #ec4899,
+    transparent
+  );
+  border-radius: 4px;
+}
+
+/* Remove separator from last item */
+.quarto-listing .quarto-post:last-of-type::after,
+.quarto-listing .quarto-listing-item:last-of-type::after {
+  display: none;
+}
 
 
 /* === Cards, Sections, Panels === */

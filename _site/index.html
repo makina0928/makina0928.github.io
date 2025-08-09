@@ -223,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
     <!-- Left: Profile Image + Badge -->
     <div class="intro-left">
       <img class="profile-img" src="profile.jpg" alt="Profile picture">
-      <div class="custom-badge">
+      <div class="custom-badge slide-in-up">
         <strong>DATA SCIENCE</strong> · <strong>BUSINESS INTELLIGENCE</strong>
       </div>
     </div>
@@ -254,6 +254,31 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </section>
 
+<script>
+function playBadge() {
+  const el = document.querySelector('.custom-badge');
+  if (!el) return;
+  el.classList.remove('slide-in-up');   // remove
+  void el.offsetWidth;                  // reflow to reset animation
+  el.classList.add('slide-in-up');      // re-add to replay
+}
+
+// run on page load
+document.addEventListener('DOMContentLoaded', playBadge);
+
+// replay when Home is clicked (works for typical Quarto nav links)
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a');
+  if (!a) return;
+
+  const href = a.getAttribute('href') || '';
+  const isHome = href === '/' || href === 'index.html' || href.endsWith('/index.qmd');
+  if (isHome) {
+    // if your site doesn't fully reload, replay the animation
+    playBadge();
+  }
+});
+</script>
 <style>
   html, body {
     margin: 0;

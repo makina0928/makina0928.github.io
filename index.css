@@ -10,3 +10,30 @@
   text-align: center;
   margin-bottom: 1rem;
 }
+
+/* Smooth, slow slide-in animation */
+@keyframes badge-in {
+  from {
+    transform: translateY(60px) scale(.96);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Class to trigger the animation */
+.slide-in-up {
+  animation: badge-in 2s cubic-bezier(.25, 1, .30, 1) both;
+  will-change: transform, opacity, filter;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .slide-in-up {
+    animation: none !important;
+  }
+}
