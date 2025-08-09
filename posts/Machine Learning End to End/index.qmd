@@ -1,0 +1,44 @@
+---
+title: "End to End Machine Learning with Deployment"
+subtitle: "From ideation to production"
+author: "Mulimbika Makina"
+date: 2025-08-03
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    code-fold: true         # ← Makes all code blocks collapsible
+    code-summary: "View Code"  # ← Label for collapsed blocks
+    df-print: paged
+theme: cosmo
+categories: [Machine Learning, MLOps, Model Deployment, Data Pipelines, FastAPI, Docker]
+
+---
+
+# Overview
+
+# 1. Problem Definition
+
+# 2. Architecture Design
+
+# 3. Data Pipeline
+
+# 4. Model Development
+
+# 5. Model Evaluation
+
+# 6. Model Deployment
+
+# 7. Monitoring & Logging
+
+# 8. Feedback Loop & Retraining
+
+# Conclusion & Takeaways
+
+# References
+
+- [scikit-learn](https://scikit-learn.org/)
+- [MLflow](https://mlflow.org/)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Docker](https://www.docker.com/)

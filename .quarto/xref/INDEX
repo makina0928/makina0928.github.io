@@ -19,5 +19,12 @@
   },
   "resume.qmd": {
     "resume.html": "6d57b6ed"
+  },
+  "posts/Machine Learning/index.qmd": {
+    "index.html": "f71a95fa",
+    "index.tex": "d1226e1b"
+  },
+  "posts/Statistical modeling/index.qmd": {
+    "index.html": "ddbc7913"
   }
 }

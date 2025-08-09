@@ -1,5 +1,5 @@
 ---
-title: "Welcome To My Blog"
+title: "Understanding Data Through Statistical Modeling"
 author: "Tristan O'Malley"
 date: "2025-07-22"
 categories: [news]

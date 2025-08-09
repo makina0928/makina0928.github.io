@@ -1,0 +1,39 @@
+---
+title: "CI/CD Pipeline For Machine Learning"
+subtitle: "Collaborate to build production-grade machine learning products"
+author: "Mulimbika Makina"
+date: 2025-08-03
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    code-fold: true         # ← Makes all code blocks collapsible
+    code-summary: "View Code"  # ← Label for collapsed blocks
+    df-print: paged
+theme: cosmo
+categories: [GitHub, DagsHub, MLFLOW, DVC]
+
+---
+
+
+# Overview
+
+# 1. Problem Definition
+
+# 2. Architecture Design
+
+# 3. Data Preprocessing Pipeline
+
+# 4. Model Training Pipeline with MLFLOW and Dagshub
+
+# 5. Model Evaluation Pipeline with MLFLOW and Dagshub
+
+# 6. Complete Pipeline with DVC Stages and Reproducibility
+
+# References
+
+- [GitHub](https://scikit-learn.org/)
+- [DagsHub](https://dagshub.com/)
+- [MLflow](https://mlflow.org/)
+- [DVC](https://dvc.org/)
