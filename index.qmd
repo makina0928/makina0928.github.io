@@ -103,7 +103,36 @@ format:
       text-align: center;
     }
   }
-  </style>
+  @media (max-width: 768px) {
+    .intro-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .intro-right p {
+      text-align: center;
+    }
+  }
+
+  /* Extra small phone optimization */
+  @media (max-width: 480px) {
+    .profile-img {
+      width: 160px;
+      height: 160px;
+    }
+    .custom-badge {
+      white-space: normal; /* allow wrapping on small screens */
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
 
   <section class="intro-section">
     <!-- Left: Profile Image + Badge -->
