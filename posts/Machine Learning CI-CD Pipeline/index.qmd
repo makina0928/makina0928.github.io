@@ -12,7 +12,7 @@ format:
     code-summary: "View Code"  # ← Label for collapsed blocks
     df-print: paged
 theme: cosmo
-categories: [GitHub, DagsHub, MLFLOW, DVC]
+categories: [GitHub, DagsHub, MLFLOW, DVC, MLOPS]
 
 ---
 ![](ci-cd.png)
