@@ -15,7 +15,7 @@ theme: cosmo
 categories: [GitHub, DagsHub, MLFLOW, DVC]
 
 ---
-
+![](ci-cd.png)
 
 # Overview
 
