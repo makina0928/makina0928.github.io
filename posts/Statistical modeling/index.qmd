@@ -1,5 +1,5 @@
 ---
-title: "Understanding Data Through Statistical Modeling"
+title: "Statistical Modeling In Data Science"
 author: "Tristan O'Malley"
 date: "2025-07-22"
 categories: [news]
