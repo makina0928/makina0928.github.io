@@ -1,8 +1,8 @@
 ---
-title: "End to End Machine Learning with Deployment"
+title: "Portfolio End to End Machine Learning with Deployment (coming soon)"
 subtitle: "From ideation to production"
 author: "Mulimbika Makina"
-date: 2025-08-03
+date: 2025-12-12
 format:
   html:
     toc: true

@@ -217,7 +217,36 @@ ul.task-list li input[type="checkbox"] {
       text-align: center;
     }
   }
-  </style>
+  @media (max-width: 768px) {
+    .intro-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .intro-right p {
+      text-align: center;
+    }
+  }
+
+  /* Extra small phone optimization */
+  @media (max-width: 480px) {
+    .profile-img {
+      width: 160px;
+      height: 160px;
+    }
+    .custom-badge {
+      white-space: normal; /* allow wrapping on small screens */
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
 
   <section class="intro-section">
     <!-- Left: Profile Image + Badge -->
@@ -234,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
         </strong></p><h1 class="display-5 fw-bolder mb-4 text-start"><strong>
         <span class="text-gradient">From Data to Impact</span>
       </strong></h1><strong>
-        I'm Mulimbika Makina, a Data Scientist with an MSc in Mathematics (Data Science Option),
+        I'm Mulimbika Makina, a Data Scientist with an MSc in Mathematics (Data Science specialization),
         combining mathematical depth with statistical rigor to solve real-world problems.
       </strong><p></p>
 

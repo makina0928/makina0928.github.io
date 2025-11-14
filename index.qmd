@@ -149,7 +149,7 @@ format:
         <h1 class="display-5 fw-bolder mb-4 text-start">
         <span class="text-gradient">From Data to Impact</span>
       </h1>
-        I'm Mulimbika Makina, a Data Scientist with an MSc in Mathematics (Data Science Option),
+        I'm Mulimbika Makina, a Data Scientist with an MSc in Mathematics (Data Science specialization),
         combining mathematical depth with statistical rigor to solve real-world problems.
       </strong></p>
 
