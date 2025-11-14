@@ -1024,13 +1024,13 @@ services:
       - ./.env:/pipeline/.env
 
     expose:
-      - 3001
+      #- removed for security purposes
     depends_on:
       - postgres_etl
     networks:
       - dokploy-network
     labels:
-      # Network labels are deliberately removed for security purposes
+      # removed for security purposes
 
   postgres_etl:
     image: postgres:latest
