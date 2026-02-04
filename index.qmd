@@ -131,6 +131,27 @@ format:
       font-size: 1.5rem;
     }
   }
+
+
+  .btn-primary {
+    background: linear-gradient(to right, #141fd2, #e02892);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-outline-primary {
+    border-color: #141fd2;
+    color: #141fd2;
+  }
+
+  .btn-outline-primary:hover {
+    background: #141fd2;
+    color: white;
+  }
+
 </style>
 
 
@@ -149,15 +170,27 @@ format:
         <h1 class="display-5 fw-bolder mb-4 text-start">
         <span class="text-gradient">From Data to Impact</span>
       </h1>
-        I'm Mulimbika Makina, a Data Scientist with an MSc in Mathematics (Data Science specialization),
-        combining mathematical depth with statistical rigor to solve real-world problems.
+        I’m Mulimbika Makina, a Data Scientist with a BSc in Mathematics (Statistics) and an MSc in Mathematics (Data Science), applying mathematical and statistical rigor to generate actionable insights from complex data.
       </strong></p>
 
       <p class="text-muted mb-0 text-justify-only">
-        With expertise in <strong>Python</strong>, <strong>SQL</strong>, <strong>R</strong>,
+        <strong>Python</strong>, <strong>SQL</strong>, <strong>R</strong>,
         <strong>SPSS</strong>, <strong>STATA</strong>, <strong>Power BI</strong>, and
-        <strong>Metabase</strong>, I build predictive models and intuitive dashboards that unlock real value.
+        <strong>Metabase</strong>.
       </p>
+
+      <!-- Call to Action Buttons -->
+      <div class="d-flex justify-content-center mt-4">
+        <div class="d-flex gap-3 mt-4 flex-wrap justify-content-start">
+          <a href="projects.qmd" class="btn btn-primary px-4 py-2 fw-semibold">
+            View Projects
+          </a>
+
+          <a href="resume.qmd" class="btn btn-outline-primary px-4 py-2 fw-semibold">
+            View Resume
+          </a>
+        </div>
+      </div>
 
       <!-- Social icons (optional) -->
       <div class="d-flex justify-content-center mt-4">
