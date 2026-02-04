@@ -2,7 +2,7 @@
 title: "Retrieval-Augmented Generation (RAG)"
 subtitle: "RAG for Knowledge-Intensive NLP"
 author: "Mulimbika Makina"
-date: 2025-12-12
+date: 2026-02-04
 format:
   html:
     toc: true
