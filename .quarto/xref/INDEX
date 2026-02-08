@@ -35,5 +35,8 @@
   },
   "posts/RAG/index.qmd": {
     "index.html": "e74a4d7e"
+  },
+  "posts/Text To SQL/index.qmd": {
+    "index.html": "843d41ce"
   }
 }
