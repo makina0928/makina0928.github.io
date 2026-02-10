@@ -63,11 +63,11 @@
     "text": "3.7 Answer Generation\nThe LLM generates the final answer using the augmented prompt. This implementation uses Groq LLM APIs for fast inference, but the architecture is model-agnostic. A clear, grounded answer with optional source citations is returned to the user."
   },
   {
-    "objectID": "posts/RAG/index.html#artifact-cache-storage-optional",
-    "href": "posts/RAG/index.html#artifact-cache-storage-optional",
+    "objectID": "posts/RAG/index.html#artifact-cache-storage",
+    "href": "posts/RAG/index.html#artifact-cache-storage",
     "title": "Hybrid RAG-SQL Agent for Enterprise Knowledge Systems",
-    "section": "3.8 Artifact & Cache Storage (Optional)",
-    "text": "3.8 Artifact & Cache Storage (Optional)\nTo improve performance and reproducibility, intermediate artifacts are stored in Cloudflare R2 which is a low-cost object storage service and is S3-compatible. The following artifacts are stored:\n\nOriginal documents\nChunks\nEmbeddings\nMetadata\n\n\n3.8.1 Why this matters\n\nFaster reloads\nStateless services\nEasy reindexing\nLower compute cost (with 10 GB free storage)"
+    "section": "3.8 Artifact & Cache Storage",
+    "text": "3.8 Artifact & Cache Storage\nTo improve performance and reproducibility, intermediate artifacts are stored in Cloudflare R2 which is a low-cost object storage service and is S3-compatible. The following artifacts are stored:\n\nOriginal documents\nChunks\nEmbeddings\nMetadata\n\n\n3.8.1 Why this matters\n\nFaster reloads\nStateless services\nEasy reindexing\nLower compute cost (with 10 GB free storage)"
   },
   {
     "objectID": "posts/RAG/index.html#summary",
@@ -221,6 +221,6 @@
     "href": "projects.html",
     "title": "Mulimbika Makina",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nEnd to End Machine Learning with Deployment\n\n\nPredicting Customer Churn\n\n\n\n\n\nDec 12, 2025\n\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\n\nHybrid RAG-SQL Agent for Enterprise Knowledge Systems\n\n\nReliable Question Answering over Unstructured and Structured Enterprise Data\n\n\n\n\n\nFeb 4, 2026\n\n\n26 min\n\n\n\n\n\n\n\n\n\n\n\n\nModern Loan Portfolio Data Stack for Financial Institutions\n\n\nImproving portfolio health and minimizing loan defaults through intelligent automated data pipelines and real-time insights.\n\n\n\n\n\nNov 13, 2025\n\n\n33 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nEnd to End Machine Learning with Deployment\n\n\nPredicting Customer Churn\n\n\n\n\n\nDec 12, 2025\n\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\n\nHybrid RAG-SQL Agent for Enterprise Knowledge Systems\n\n\nReliable Question Answering over Unstructured and Structured Enterprise Data\n\n\n\n\n\nFeb 4, 2026\n\n\n17 min\n\n\n\n\n\n\n\n\n\n\n\n\nModern Loan Portfolio Data Stack for Financial Institutions\n\n\nImproving portfolio health and minimizing loan defaults through intelligent automated data pipelines and real-time insights.\n\n\n\n\n\nNov 13, 2025\n\n\n33 min\n\n\n\n\n\n\nNo matching items"
   }
 ]
