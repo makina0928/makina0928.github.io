@@ -491,6 +491,7 @@ from loans
 This project utilized this layer to create business-facing datasets for analytics and machine learning data models. It consolidated dimension and fact models into an analytics table that supported Metabase dashboards and generated feature tables for ML models predicting loan defaults (future work).
 
 ::: {.callout-tip title="Marts Layer Implementation Snippet" collapse=true}
+{% raw %}
 ```sql
 
 --========================================
@@ -783,6 +784,7 @@ SELECT *
 FROM inference
 
 ```
+{% endraw %}
 :::
 
 
