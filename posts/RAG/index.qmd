@@ -14,7 +14,7 @@ format:
 categories: [Applied Machine Learning, Large Language Models (LLMs), Retrieval-Augmented Generation, AI Systems Engineering,Vector Databases, SQL Agents]
 
 ---
-
+![](cover.jpg)
  
 # Overview
 
@@ -767,27 +767,29 @@ From the user’s perspective, this feels like a single intelligent assistant bu
 
 # System Overview
  
-![](1.png)
-![](2.png)
+## Database Connection view
+
 ![](3.png)
+
+## Document Retrieval view
+
 ![](4.png)
+
+## Vector Search view
+
 ![](5.png)
 
 [Contact me](https://zamdatalabs.com/contact.html) to request access to the live demo.
 
 # Skills & Concepts Demonstrated
 
-- Retrieval-Augmented Generation (RAG)
-- Vector databases (Qdrant)
-- Embedding models (Sentence Transformers)
-- Tool-augmented LLM agents (LangChain-style)
-- SQL agents with read-only enforcement
-- Guardrails, validation, and safety constraints
-- Asynchronous Python services
-- Modular system design
-- Cloud object storage (Cloudflare R2)
-- Production-ready logging, caching, and observability
-
+- End-to-end RAG pipeline implementation
+- SQL agent with tool-based database access
+- LLM prompt engineering for grounding and reasoning
+- Vector database integration for retrieval
+- Document parsing and chunking for unstructured data
+- API design for hybrid knowledge access
+- Production-ready architecture for reliability and safety
 
 # References
 
