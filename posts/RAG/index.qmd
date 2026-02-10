@@ -92,14 +92,96 @@ The goal of this stream is to **allow an LLM to answer questions using private d
 
 ## Document Ingestion & Parsing
 
-The pipeline begins with raw documents such as PDFs, DOCX files, spreadsheets, or HTML pages. These documents must first be converted into clean, structured text before any downstream processing is possible. This project uses *Docling* to convert a wide range of document formats into **structured markdown**, preserving headings and layout information better than simple text extractors.
+The pipeline begins with raw documents parsing, where documents are converted into clean, structured text before any downstream processing is possible. This project uses **llama-parse** to convert a wide range of document formats into **structured markdown**, preserving headings and layout information.
  
-### Why this choice
+### Core Features & Parsing Fundamentals
 
-* Handles **complex PDFs** more reliably
-* Produces **clean, readable markdown**
-* Works well with scanned documents via OCR
-* Easier to enrich with metadata (headings, sections)
+LlamaParse is a GenAI-native document parser designed for converting complex documents into LLM-ready data for Retrieval-Augmented Generation (RAG) systems and it excels at:
+
+- **Complex Document Handling**: Financial reports, research papers, scanned PDFs
+- **Precise Extraction**: Tables, charts, images, and diagrams
+- **LLM-Ready Output**: Clean markdown, text, or structured JSON
+
+#### Supported File Formats (70+)
+
+| Category | Formats |
+|----------|----------|
+| Documents | PDF, DOC, DOCX, RTF, TXT, EPUB |
+| Spreadsheets | XLSX, XLS, CSV, ODS |
+| Presentations | PPTX, PPT |
+| Images | JPG, PNG, GIF, BMP, TIFF, WEBP, SVG |
+| Web | HTML, HTM |
+| Audio | MP3, MP4, WAV, WEBM, M4A (≤20MB) |
+
+#### Pricing
+- **Free Tier**: 1,000 pages daily
+- **Paid Tier**: 7,000 pages/week + $0.003/additional page
+
+#### API Key Setup
+
+LlamaParse requires an API key from [LlamaCloud](https://cloud.llamaindex.ai/api-key).
+
+**Steps to get your API key:**
+
+1. Go to https://cloud.llamaindex.ai/
+2. Sign up or log in
+3. Navigate to API Keys section
+4. Create a new API key (starts with `llx-`)
+
+
+#### Architecture
+
+* LlamaParse provides both synchronous and asynchronous methods:
+
+| Sync Method | Async Method | Description |
+|------------|--------------|-------------|
+| `load_data()` | `aload_data()` | Parse and return Documents |
+| `parse()` | `aparse()` | Parse and return JobResult |
+| `get_images()` | `aget_images()` | Get extracted images |
+
+* LlamaParse uses a **job-based architecture**:
+
+```
+Document → Submit Job → Poll Status → Get Results
+```
+
+* **Key Components:**
+- **LlamaParse Client**: Main interface for document parsing
+- **Job**: Represents a parsing task (can be async)
+- **JobResult**: Contains parsed content, pages, images, charts, layout
+- **Document**: LlamaIndex Document object with text and metadata
+
+
+
+* Available pre-optimized configurations (presets) for different document types
+
+| Preset | Best For | Description |
+|--------|----------|-------------|
+| `fast` | Quick extraction | No OCR, fastest processing |
+| `balanced` | General documents | Balance of speed and accuracy |
+| `premium` | Complex documents | Best quality, uses advanced models |
+| `structured` | Forms, tables | Optimized for structured data |
+| `auto` | Mixed content | Automatic mode selection |
+| `scientific` | Research papers | LaTeX, equations, citations |
+| `invoice` | Invoices, receipts | Financial document extraction |
+| `slides` | Presentations | PowerPoint, slide content |
+
+
+
+#### Parse Modes
+
+* **1. High-Level Modes (Boolean flags):**
+- `fast_mode`: Skip OCR, fastest processing
+- `premium_mode`: Best available parser
+- `auto_mode`: Automatic mode selection
+
+* **2. Granular Parse Modes (Page-level):**
+- `parse_page_without_llm`: Fast extraction without AI
+- `parse_page_with_llm`: Uses LLM for each page
+- `parse_page_with_lvm`: Uses vision model for pages
+- `parse_page_with_agent`: Agentic reasoning per page
+- `parse_page_with_layout_agent`: Layout-aware agent
+
 
 ---
 
@@ -118,16 +200,20 @@ This project uses **Chonkie’s RecursiveChunker**, which is character-based, LL
 
 ### Why this choice
 
-* Deterministic and predictable
-* No dependency on tokenizers or LLMs
-* Easy to debug and evaluate
+Chonkie is a production-ready text chunking library designed specifically for RAG applications. It provides:
+
+- **9 specialized chunkers** (RecursiveChunker, TokenChunker, SentenceChunker, TableChunker, CodeChunker, SemanticChunker, LateChunker, NeuralChunker, SlumberChunker)
+- **Local processing** - your data never leaves your infrastructure
+- **High performance** - optimized for speed and efficiency
+- **Thread-safe** - suitable for concurrent processing
+- **Flexible embeddings** - works with OpenAI, Gemini, Sentence Transformers, and more
 
 ---
 
 ## Embedding Generation
 
-Each chunk is converted into a numerical vector (embedding) using **Sentence Transformers (local)** to capture each chunk's semantic meaning. The same process is later applied to user queries. 768-dimensional embeddings are generated locally and cached to avoid recomputation.
-
+In this project, each chunk is converted into a numerical vector (embedding) using **Sentence Transformers (local)** to capture each chunk's semantic meaning (other alternatives include OpenAI, Gemini). The same process is later applied to user queries. 768-dimensional embeddings are generated locally and cached to avoid recomputation.
+ 
 ### Why this choice
 
 * No external API dependency
@@ -149,10 +235,9 @@ All chunk embeddings are stored in a vector database. At query time, the system 
 
 ### Why this choice
 
-* Open-source and production-ready
+* Easy to self-host (Open-source) and cloud hosted (with 1GB free cluster).
 * Strong filtering and indexing support
 * Clean Python API
-* Easy to self-host or run in the cloud
 
 ---
 
@@ -186,7 +271,7 @@ The LLM generates the final answer using the augmented prompt. This implementati
 
 ---
 
-## Artifact & Cache Storage (Optional)
+## Artifact & Cache Storage
 
 To improve performance and reproducibility, intermediate artifacts are stored in **Cloudflare R2** which is a low-cost object storage service and is S3-compatible. The following artifacts are stored:
 
@@ -200,7 +285,7 @@ To improve performance and reproducibility, intermediate artifacts are stored in
 * Faster reloads
 * Stateless services
 * Easy reindexing
-* Lower compute cost
+* Lower compute cost (with 10 GB free storage)
 
 ---
 
@@ -996,7 +1081,9 @@ In a Retrieval-Augmented Generation (RAG) pipeline, chunking occurs during the d
 
 # References
 
- - [Docling](https://www.docling.ai/)
+ - [LlamaIndex Cloud](https://cloud.llamaindex.ai/)
+
+ - [LlamaParser](https://developers.llamaindex.ai/python/framework/integrations/llm/groq/)
 
  - [Chonkie](https://docs.chonkie.ai/oss/quick-start)
 
