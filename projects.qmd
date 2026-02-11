@@ -1,7 +1,7 @@
 ---
 listing:
   contents: posts
-  fields: [image, title, date, reading-time]
+  fields: [image, title, description, date, reading-time]
   categories: true
   sort-ui: true
   filter-ui: true
@@ -13,3 +13,9 @@ format:
     css: projects.css
     page-layout: full
 ---
+
+```{=html}
+<script>
+  document.body.classList.add('light-theme');
+</script>
+```

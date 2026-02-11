@@ -3,397 +3,263 @@ format:
   html:
     theme: default
     toc: false
-    css: index.css
+    css: [styles.css, index.css]
     page-layout: full
 ---
 
 ```{=html}
 <style>
-  .intro-section {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row; /* Critical for desktop layout */
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-  }
-
-  .intro-left {
-    flex: 1 1 280px;
+  .hero-section {
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    order: 1; /* Image should appear on the left */
-  }
-
-  .intro-right {
-    flex: 2 1 300px;
-    max-width: 700px;
-    order: 2; /* Text should appear on the right */
-  }
-
-  /* Mobile-specific override: stack vertically */
-  @media (max-width: 768px) {
-    .intro-section {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .intro-left {
-      order: 1; /* Image appears on top */
-    }
-
-    .intro-right {
-      order: 2; /* Text appears below on mobile */
-    }
-
-    .intro-right p {
-      text-align: center;
-    }
-  }
-
-
-
-
-  .profile-img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    margin-bottom: 16px;
-  }
-
-  .custom-badge {
-    background: linear-gradient(to right, #2e2eff, #ec2aa7);
-    color: white;
-    font-weight: 700;
-    padding: 10px 24px;
-    border-radius: 999px;
-    font-size: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .intro-right {
-    flex: 2 1 300px;
-    max-width: 700px;
-  }
-
-  .intro-right p {
-    text-align: justify;
-  }
-
-  .text-gradient {
-    background: linear-gradient(to right, #141fd2, #e02892);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-  }
-
-  @media (max-width: 768px) {
-    .intro-section {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .intro-right p {
-      text-align: center;
-    }
-  }
-  @media (max-width: 768px) {
-    .intro-section {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .intro-right p {
-      text-align: center;
-    }
-  }
-
-  /* Extra small phone optimization */
-  @media (max-width: 480px) {
-    .profile-img {
-      width: 160px;
-      height: 160px;
-    }
-    .custom-badge {
-      white-space: normal; /* allow wrapping on small screens */
-      text-align: center;
-      padding: 8px 16px;
-      font-size: 0.9rem;
-    }
-    h1 {
-      text-align: center;
-      font-size: 1.5rem;
-    }
-  }
-
-
-  .btn-primary {
-    background: linear-gradient(to right, #141fd2, #e02892);
-    border: none;
-  }
-
-  .btn-primary:hover {
-    opacity: 0.9;
-  }
-
-  .btn-outline-primary {
-    border-color: #141fd2;
-    color: #141fd2;
-  }
-
-  .btn-outline-primary:hover {
-    background: #141fd2;
-    color: white;
-  }
-
-</style>
-
-
-  <section class="intro-section">
-    <!-- Left: Profile Image + Badge -->
-    <div class="intro-left">
-      <img class="profile-img" src="profile.jpg" alt="Profile picture" />
-      <div class="custom-badge slide-in-up">
-        <strong>DATA SCIENCE</strong> · <strong>BUSINESS INTELLIGENCE</strong>
-      </div>
-    </div>
-
-    <!-- Right: Description -->
-    <div class="intro-right">
-      <p class="lead fw-light mb-2 text-justify-only"><strong>
-        <h1 class="display-5 fw-bolder mb-4 text-start">
-        <span class="text-gradient">From Data to Impact</span>
-      </h1>
-        I’m Mulimbika Makina, a Data Scientist with a BSc in Mathematics (Statistics) and an MSc in Mathematics (Data Science), applying mathematical and statistical rigor to generate actionable insights from complex data.
-      </strong></p>
-
-      <p class="text-muted mb-0 text-justify-only">
-        <strong>Python</strong>, <strong>SQL</strong>, <strong>R</strong>,
-        <strong>SPSS</strong>, <strong>STATA</strong>, <strong>Power BI</strong>, and
-        <strong>Metabase</strong>.
-      </p>
-
-      <!-- Call to Action Buttons -->
-      <div class="d-flex justify-content-center mt-4">
-        <div class="d-flex gap-3 mt-4 flex-wrap justify-content-start">
-          <a href="projects.qmd" class="btn btn-primary px-4 py-2 fw-semibold">
-            View Projects
-          </a>
-
-          <a href="resume.qmd" class="btn btn-outline-primary px-4 py-2 fw-semibold">
-            View Resume
-          </a>
-        </div>
-      </div>
-
-      <!-- Social icons (optional) -->
-      <div class="d-flex justify-content-center mt-4">
-        <div class="social-icons fs-3 d-flex gap-3">
-          <a class="text-gradient" href="https://www.linkedin.com/in/mulimbika-makina-6a2507318" target="_blank"><i class="bi bi-linkedin"></i></a>
-          <a class="text-gradient" href="https://github.com/makina0928" target="_blank"><i class="bi bi-github"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-```
-
-
-<script>
-function playBadge() {
-  const el = document.querySelector('.custom-badge');
-  if (!el) return;
-  el.classList.remove('slide-in-up');   // remove
-  void el.offsetWidth;                  // reflow to reset animation
-  el.classList.add('slide-in-up');      // re-add to replay
-}
-
-// run on page load
-document.addEventListener('DOMContentLoaded', playBadge);
-
-// replay when Home is clicked (works for typical Quarto nav links)
-document.addEventListener('click', (e) => {
-  const a = e.target.closest('a');
-  if (!a) return;
-
-  const href = a.getAttribute('href') || '';
-  const isHome = href === '/' || href === 'index.html' || href.endsWith('/index.qmd');
-  if (isHome) {
-    // if your site doesn't fully reload, replay the animation
-    playBadge();
-  }
-});
-</script>
-
-
-
-
-
-
-
-
-```{=html}
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: system-ui, sans-serif;
-    background: #cce4f9;
-  }
-  
-
-  #starfield {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .container {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding-top: 100px;
-  }
-
-  .profile-img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  }
-
-  h1 {
-    margin-top: 20px;
-    font-size: 2em;
-    font-weight: bold;
-  }
-
-  .social-links {
-    margin-top: 20px;
-    display: flex;
     justify-content: center;
-    gap: 16px;
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
-  .social-links a {
-    text-decoration: none;
-    border: 1px solid #ccc;
-    padding: 8px 16px;
-    border-radius: 6px;
-    color: #222;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: background 0.3s;
+  .profile-img-container {
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
   }
 
-  .social-links a:hover {
-    background: #f5f5f5;
+  .profile-img-centered {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Protrude Button Effect (Neumorphism-inspired for dark mode) */
+    box-shadow: 
+      10px 10px 20px rgba(0, 0, 0, 0.5),
+      -5px -5px 15px rgba(255, 255, 255, 0.05),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 10px; /* Space for the background color to show around the edges if desired */
   }
 
-  .social-links i {
-    font-size: 1.2em;
-  }
-</style>
-
-
-
-<canvas id="starfield"></canvas>
-
-<script>
-const canvas = document.getElementById('starfield');
-const ctx = canvas.getContext('2d');
-
-let stars = [];
-const numStars = 150;
-const maxDistance = 100;
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-function createStars() {
-  stars = [];
-  for (let i = 0; i < numStars; i++) {
-    const speed = Math.random() * 0.5 + 0.2;
-    const angle = Math.random() * 2 * Math.PI;
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.5 + 0.5,
-      dx: Math.cos(angle) * speed,
-      dy: Math.sin(angle) * speed
-    });
-  }
-}
-
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
-  for (const star of stars) {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
-    ctx.fill();
+  .profile-img-centered:hover {
+    transform: scale(1.03) translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 
+      15px 20px 30px rgba(0, 0, 0, 0.6),
+      -5px -5px 20px rgba(59, 130, 246, 0.1);
   }
 
-  for (let i = 0; i < stars.length; i++) {
-    for (let j = i + 1; j < stars.length; j++) {
-      const dx = stars[i].x - stars[j].x;
-      const dy = stars[i].y - stars[j].y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < maxDistance) {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / maxDistance})`;
-        ctx.lineWidth = 0.5;
-        ctx.moveTo(stars[i].x, stars[i].y);
-        ctx.lineTo(stars[j].x, stars[j].y);
-        ctx.stroke();
-      }
+  .hero-badge {
+    background: linear-gradient(90deg, #3b82f6, #d946ef);
+    border: none;
+    color: white;
+    font-weight: 800;
+    padding: 0.8rem 2rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    
+    /* Repeating Animation - Pronounced 'climb' from bottom */
+    animation: floatUpRepeat 7s ease-in-out infinite;
+  }
+
+  @keyframes floatUpRepeat {
+    0% {
+      opacity: 0;
+      transform: translateY(100px) scale(0.95);
+      filter: blur(8px);
+    }
+    30% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    91%, 100% {
+      opacity: 0;
+      transform: translateY(0);
     }
   }
-}
 
-function updateStars() {
-  for (const star of stars) {
-    star.x += star.dx;
-    star.y += star.dy;
-
-    if (star.x < 0) star.x = canvas.width;
-    if (star.x > canvas.width) star.x = 0;
-    if (star.y < 0) star.y = canvas.height;
-    if (star.y > canvas.height) star.y = 0;
+  .hero-badge strong {
+    color: #f8fafc;
   }
-}
 
-function animate() {
-  drawStars();
-  updateStars();
-  requestAnimationFrame(animate);
-}
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: #f8fafc;
+  }
 
-window.addEventListener('resize', () => {
-  resizeCanvas();
-  createStars();
-});
+  .hero-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #94a3b8;
+    margin-bottom: 3.5rem;
+    max-width: 800px;
+  }
 
-resizeCanvas();
-createStars();
-animate();
-</script>
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 4.5rem;
+  }
 
+  .tech-item {
+    font-weight: 600;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tech-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #3b82f6;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-hero-primary {
+    background: linear-gradient(90deg, #3b82f6, #d946ef);
+    border: none;
+    color: white;
+    padding: 1.1rem 2.8rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    text-decoration: none;
+  }
+
+  .btn-hero-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+    color: white;
+  }
+
+  .btn-hero-secondary {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #f8fafc;
+    padding: 1.1rem 2.8rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    color: #f8fafc;
+  }
+
+  .social-link {
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    color: #94a3b8;
+  }
+
+  .social-link:hover {
+    color: #3b82f6;
+    transform: translateY(-5px);
+  }
+
+  /* Animations */
+  .fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-0 { animation-delay: 0s; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+</style>
+
+<div class="hero-section">
+  <!-- Profile Piece -->
+  <div class="profile-img-container fade-up delay-0">
+    <img src="profile.jpg" alt="Mulimbika Makina" class="profile-img-centered">
+  </div>
+
+  <!-- Status Badge -->
+  <div class="hero-badge">
+    <strong>Data Science</strong> · <strong>Business Intelligence</strong>
+  </div>
+
+  <!-- Main Heading -->
+  <h1 class="hero-title fade-up delay-1">
+    From Data to <span class="text-gradient">Impact</span>
+  </h1>
+
+  <!-- Description -->
+  <p class="hero-description fade-up delay-2">
+    I’m <strong>Mulimbika Makina</strong>, a Data Scientist specializing in mathematical and statistical rigor 
+    to drive strategic business decisions through complex data analysis.
+  </p>
+
+  <!-- Tech Stack -->
+  <div class="tech-stack fade-up delay-3">
+    <span class="tech-item">Python</span>
+    <span class="tech-item">SQL</span>
+    <span class="tech-item">R</span>
+    <span class="tech-item">Deep Learning (PyTorch)</span>
+    <span class="tech-item">LLMs</span>
+    <span class="tech-item">NLP</span>
+    <span class="tech-item">Power BI</span>
+    <span class="tech-item">Machine Learning</span>
+    <span class="tech-item">Statistics</span>
+    <span class="tech-item">Metabase</span>
+  </div>
+
+  <!-- CTAs -->
+  <div class="d-flex gap-4 justify-content-center fade-up delay-4 flex-wrap">
+    <a href="projects.qmd" class="btn-hero-primary">
+      Explore Projects
+    </a>
+    <a href="resume.qmd" class="btn-hero-primary">
+      Review CV
+    </a>
+  </div>
+
+  <!-- Social links -->
+  <div class="mt-5 pt-4 fade-up delay-4">
+    <div class="d-flex gap-4 justify-content-center">
+      <a href="https://www.linkedin.com/in/mulimbika-makina-6a2507318" target="_blank" class="social-link">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="https://github.com/makina0928" target="_blank" class="social-link">
+        <i class="bi bi-github"></i>
+      </a>
+    </div>
+  </div>
+</div>
+```

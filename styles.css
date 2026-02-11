@@ -1,0 +1,372 @@
+html {
+  background: linear-gradient(135deg, #020617, #0f172a) fixed;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  background: transparent !important;
+  color: #e5e7eb;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Sits above html background but behind body content */
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #3b82f6, #d946ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-gradient {
+  background: linear-gradient(90deg, #3b82f6, #d946ef);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* === NUCLEAR BORDER & SHADOW RESET === */
+/* This kills ALL structural borders from Quarto/Bootstrap */
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Specifically target Quarto structural containers */
+#quarto-content,
+.quarto-container,
+.page-columns,
+main,
+#quarto-document-content,
+.quarto-column-container,
+.quarto-content-wrapper,
+.column-body,
+.column-page,
+.column-screen,
+.quarto-layout-cell,
+.quarto-layout-container,
+article,
+header,
+footer,
+#quarto-header,
+#quarto-footer,
+.quarto-title-block {
+  border: none !important;
+  border-width: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Re-apply borders ONLY to our specific components */
+.glass-card,
+.experience-card,
+.job-card,
+.contact-card,
+.skill-item,
+.form-control,
+.btn-gradient,
+.tab-btn,
+.quarto-listing-filter-ui,
+.quarto-listing-sort-ui {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.tab-btn.active {
+  border: none !important;
+}
+
+/* Specific fix for Quarto's horizontal lines */
+hr,
+.quarto-header-hr,
+.title-block-style-full .quarto-title-block {
+  border: none !important;
+  display: none !important;
+}
+
+/* Light Theme for Resume, Projects, and Contact */
+.light-theme {
+  background: linear-gradient(180deg, #FAFAFA, #F5F5F5) fixed !important;
+  color: #1e293b !important;
+}
+
+/* Global Title Override for Light Theme - Aggressive Specificity */
+body.light-theme h1, 
+body.light-theme h2, 
+body.light-theme h3, 
+body.light-theme h4,
+body.light-theme .listing-title a,
+body.light-theme .job-title,
+body.light-theme .title,
+body.light-theme .quarto-title-block .title {
+  background: linear-gradient(90deg, #3b82f6, #d946ef) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .listing-description,
+body.light-theme .listing-subtitle,
+body.light-theme .text-muted,
+body.light-theme p,
+body.light-theme .listing-date,
+body.light-theme .listing-reading-time,
+body.light-theme .metadata,
+body.light-theme .quarto-title-meta-heading,
+body.light-theme .quarto-title-meta-contents p {
+  color: #334155 !important;
+}
+
+body.light-theme .quarto-category {
+  color: #1e293b !important;
+  background: #D9DADF !important;
+  border: none !important;
+  padding: 0.5rem 1.2rem !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 4px 4px 8px #a6aaaa, -4px -4px 8px #d0d4d4 !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  margin-right: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.light-theme .quarto-category:hover {
+  box-shadow: 2px 2px 5px #a6aaaa, -2px -2px 5px #d0d4d4 !important;
+  transform: translateY(1px) !important;
+  color: #3b82f6 !important;
+}
+
+/* Navbar Fix for Light Theme */
+body.light-theme #quarto-header .navbar {
+  background: #F8FAFC !important; /* Navigation Ribbon */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #E5E7EB !important;
+  padding: 0.8rem 0 !important;
+}
+
+body.light-theme .quarto-title-banner {
+  background: #F8FAFC !important;
+}
+
+body.light-theme .navbar-brand {
+  color: #1e293b !important;
+  font-weight: 700 !important;
+}
+
+body.light-theme .navbar-nav .nav-item {
+  margin: 0 0.5rem !important;
+}
+
+body.light-theme .nav-link {
+  color: #334155 !important;
+  background: #FFFFFF !important;
+  padding: 0.6rem 1.2rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  border: 1px solid #E5E7EB !important;
+  transition: all 0.2s ease !important;
+}
+
+body.light-theme .nav-link:hover {
+  background: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #334155 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+body.light-theme .nav-link.active {
+  background: #BAC8B1 !important; /* Soft Sage Green */
+  color: #334155 !important;
+  border-color: #BAC8B1 !important;
+  box-shadow: 0 4px 12px #E6E6E6 !important;
+  transform: none !important;
+}
+
+body.light-theme .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.light-theme #particles-js {
+  display: none; /* Hide particles for clearer light theme */
+}
+
+.light-theme .glass-card {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+}
+
+.light-theme .glass-card:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .text-muted {
+  color: #475569 !important;
+}
+
+.light-theme .date-badge {
+  background: rgba(0, 0, 0, 0.1);
+  color: #1e293b !important;
+}
+
+.light-theme li {
+  color: #334155;
+}
+
+.light-theme .company-info {
+  color: #475569;
+}
+
+.light-theme .tab-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #475569;
+}
+
+.light-theme .tab-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+}
+
+.light-theme .form-control {
+  background: #fff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+.light-theme .form-control:focus {
+  border-color: #3b82f6 !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.1) !important;
+}
+
+.light-theme .form-floating > label {
+  color: #64748b !important;
+  padding: 1rem 0.75rem !important;
+}
+
+.light-theme .form-floating > .form-control:focus ~ label,
+.light-theme .form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: #3b82f6 !important;
+  opacity: 0.8 !important;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
+}
+
+/* Centralized Gradients and Contact Styling */
+.btn-gradient {
+  background: linear-gradient(90deg, #3b82f6, #d946ef) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border-radius: 0.8rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #3b82f6, #d946ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.icon-box {
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #3b82f6, #d946ef);
+  border-radius: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s ease;
+  border-radius: 2rem;
+}
+
+.light-theme .contact-card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05) !important;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Fix for Post/Project Listing Specifics */
+.light-theme .listing-actions-group .input-group-text,
+.light-theme .quarto-listing-filter-ui,
+.light-theme .quarto-listing-sort-ui {
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #1e293b !important;
+}
+
+.light-theme .quarto-listing-filter-ui input,
+.light-theme .quarto-listing-sort-ui select {
+  background: #fff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #1e293b !important;
+}

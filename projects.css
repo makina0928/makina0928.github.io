@@ -1,211 +1,130 @@
-/* === Starfield Canvas === */
-#starfield {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  pointer-events: none; /* Allow clicks to pass through */
-}
+/* === Projects Page Styling === */
 
-/* === Backgrounds === */
 body {
-  background-color: #E0E0E0; /* Professional Gray */
-  font-family: system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
+  color: #e5e7eb;
 }
 
-/* === Headings === */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-}
-
-
-
-/* === Links === */
-a {
-  color: #007B7B; /* Accent color for links */
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-
-
-
-
-
-
-
-
-
-/* Base: project titles */
+/* Listing Titles */
 .quarto-listing .listing-title a,
-.quarto-post .listing-title a,
-.quarto-listing .quarto-post .title a {
-  color: #2A2A2A;
+.quarto-post .listing-title a {
+  color: #f8fafc;
+  font-weight: 800;
+  font-size: 1.5rem;
   text-decoration: none;
-  transition: color .2s ease, transform .2s ease, background-position .4s ease;
+  transition: all 0.3s ease;
 }
 
-/* Subtle lift + gradient text on hover */
-.quarto-listing .listing-title a:hover,
-.quarto-post .listing-title a:hover,
-.quarto-listing .quarto-post .title a:hover {
-  transform: translateY(-2px);
+.quarto-listing .listing-title a:hover {
   background: linear-gradient(90deg, #3b82f6, #ec4899);
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;               /* Safari fallback handled by -webkit-text-fill */
   -webkit-text-fill-color: transparent;
 }
 
-/* Optional: animated underline that grows from center on hover */
-.quarto-listing .listing-title a,
-.quarto-post .listing-title a,
-.quarto-listing .quarto-post .title a {
-  position: relative;
+/* Descriptions */
+.listing-description {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
 }
 
-.quarto-listing .listing-title a::after,
-.quarto-post .listing-title a::after,
-.quarto-listing .quarto-post .title a::after {
+/* Metadata */
+.listing-date, .listing-reading-time {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+/* Categories */
+.quarto-listing-category {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.2rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.quarto-listing-category:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+/* Listing Item Separator */
+.quarto-listing .quarto-post {
+  position: relative;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.01);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.quarto-listing .quarto-post:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Light Theme Specific Hover */
+.light-theme .quarto-listing .quarto-post {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-theme .quarto-listing .quarto-post:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.quarto-listing .quarto-post::after {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: -4px;
-  height: 3px;
-  width: 0;
-  transform: translateX(-50%);
-  border-radius: 3px;
-  background: linear-gradient(90deg, #3b82f6, #ec4899);
-  transition: width .25s ease;
-}
-
-.quarto-listing .listing-title a:hover::after,
-.quarto-post .listing-title a:hover::after,
-.quarto-listing .quarto-post .title a:hover::after {
-  width: 100%;
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .quarto-listing .listing-title a,
-  .quarto-post .listing-title a,
-  .quarto-listing .quarto-post .title a {
-    transition: none;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Stylish blue-to-pink gradient separator with fade at both ends */
-.quarto-listing .quarto-post,
-.quarto-listing .quarto-listing-item {
-  position: relative;
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-}
-
-.quarto-listing .quarto-post::after,
-.quarto-listing .quarto-listing-item::after {
-  content: "";
-  position: absolute;
-  left: 0;
   bottom: 0;
-  height: 4px; /* thickness */
+  left: 0;
   width: 100%;
-  background: linear-gradient(
-    to right,
-    transparent,
-    #3b82f6,
-    #ec4899,
-    transparent
-  );
-  border-radius: 4px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, #ec4899, transparent);
+  border-radius: 2px;
 }
 
-/* Remove separator from last item */
-.quarto-listing .quarto-post:last-of-type::after,
-.quarto-listing .quarto-listing-item:last-of-type::after {
+.quarto-listing .quarto-post:last-child::after {
   display: none;
 }
 
-
-/* === Cards, Sections, Panels === */
-.card, .section, .content-box {
-  background-color: #FFFFFF;
-  border: 1px solid #C5C5C5; /* Silver Sand */
+/* Filter/Sort UI */
+.quarto-listing-filter-ui, .quarto-listing-sort-ui {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
   padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2rem;
 }
 
-/* === Muted Labels, Meta Text === */
-.muted, .meta, small, .tagline {
-  color: #888888; /* Slightly darker gray */
+.quarto-listing-filter-ui input, 
+.quarto-listing-sort-ui select {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
 }
 
-/* === Dividers / Horizontal Rules === */
-hr {
-  border: none;
-  border-top: 1px solid #C5C5C5;
-  margin: 2rem 0;
+/* Sidebar Categories List */
+.quarto-listing-category-title {
+  color: #f8fafc;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-/* === Buttons === */
-button, .btn {
-  background-color: #333333;
-  color: #ffffff;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-button:hover, .btn:hover {
-  background-color: #444444;
-}
-
-/* === Inputs / Forms === */
-input, textarea, select {
-  border: 1px solid #CCCCCC;
-  padding: 0.6rem;
-  border-radius: 4px;
-  background-color: #ffffff;
-  color: #2A2A2A;
-}
-input::placeholder, textarea::placeholder {
-  color: #999999;
-}
-
-/* === Footer === */
-footer {
-  background-color: #D0D0D0; /* Slightly darker footer */
-  color: #2A2A2A;
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
+.quarto-category-count {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
 }

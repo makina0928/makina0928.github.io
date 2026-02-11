@@ -20,7 +20,8 @@ format:
   html:
     theme: default
     toc: false
-    #css: styles.css
+    css: styles.css
+    include-after-body: background.html
 
 
 # project:
